@@ -1,0 +1,89 @@
+﻿
+@{
+    Layout = null;
+
+}
+<!-- Left Sidenav -->
+<div class="left-sidenav">
+
+    <div class="menu-content h-100" data-simplebar>
+        <ul class="metismenu left-sidenav-menu">
+            <li>
+                <a href="@Url.Action("Index","App")"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Inicio</span><span class="menu-arrow"></span></a>
+            </li>
+            <li class="menu-label mt-0">Ventas</li>
+
+            <li class="nav-item"><a class="nav-link" href="#"><i class="ti-control-record"></i>Dashboard</a></li>
+            <li>
+                <a href="javascript: void(0);"><i class="ti-control-record"></i>CRM <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                <ul class="nav-second-level" aria-expanded="false">
+                    <li>
+                        <a href="javascript: void(0);"><i class="ti-control-record"></i>Clientes <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="@Url.Action("Nuevo","Clientes")">Nuevo cliente</a></li>
+                            <li><a href="@Url.Action("Activos","Clientes")">Clientes activos</a></li>
+                            <li><a href="@Url.Action("Potenciales","Clientes")">Clientes potenciales</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);"><i class="ti-control-record"></i>Cotizaciones <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="@Url.Action("Nueva","Cotizaciones")">Nueva cotizacion</a></li>
+                            <li><a href="@Url.Action("Historial","Cotizaciones")">Historial</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);"><i class="ti-control-record"></i>Facturacion <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="#">Nueva factura</a></li>
+                            <li><a href="#">Historial</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </li>
+            <li class="menu-label mt-0">Operaciones</li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="ti-control-record"></i>Dashboard</a></li>
+            <li>
+                <a href="javascript: void(0);"><i class="ti-control-record"></i>Proyectos <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                <ul class="nav-second-level" aria-expanded="false">
+                    <li><a href="@Url.Action("Nuevo","Proyectos")">Nuevo proyecto</a></li>
+                    <li><a href="@Url.Action("Activos","Proyectos")">Proyectos activos</a></li>
+                    <li><a href="@Url.Action("Archivados","Proyectos")">Proyectos archivados</a></li>
+
+                </ul>
+            </li>
+            <li>
+                <a href="javascript: void(0);"><i class="ti-control-record"></i>Gestion de actividades <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                <ul class="nav-second-level" aria-expanded="false">
+                    <li><a href="#">Tareas</a></li>
+                    <li><a href="#">Calendario de trabajo</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript: void(0);"><i class="ti-control-record"></i>Colaboradores <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                <ul class="nav-second-level" aria-expanded="false">
+                    <li><a href="#">Nuevo colaborador</a></li>
+                    <li><a href="#">Colaboradores</a></li>
+                    <li><a href="#">Equipos de trabajo</a></li>
+
+                </ul>
+            </li>
+            <hr class="hr-dashed hr-menu">
+            <li>
+                <a href="@Url.Action("Log_out","Home")"> <i data-feather="power" class="align-self-center menu-icon"></i><span>Cerrar sesion</span></a>
+
+            </li>
+
+        </ul>
+
+        <div class="update-msg text-center">
+            <h5 class="mt-3">Frase del dia</h5>
+            <p class="mb-3">"Lorem ipsum amoe noe isum dure itpum"</p>
+         
+        </div>
+    </div>
+</div>
+<!-- end left-sidenav-->

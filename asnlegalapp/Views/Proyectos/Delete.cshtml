@@ -1,0 +1,84 @@
+﻿@model asnlegalapp.Models.Tb_Proyectos
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h3>¿Desea eliminar el siguiente proyecto?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.Label("nombre del cliente: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tb_Clientes.Nombre)
+        </dd>
+
+
+        <dt>
+            @Html.Label("nombre del proyecto: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.Label("Descripcion: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.Label("Fecha de creacion: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_creacion)
+        </dd>
+
+        <dt>
+            @Html.Label("Tipo: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.Label("Prioridad: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prioridad)
+        </dd>
+
+        <dt>
+            @Html.Label("Estado: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger waves-effect waves-light" /> |
+            @Html.ActionLink("Regresar", "Activos")
+        </div>
+    }
+</div>

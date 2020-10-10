@@ -1,0 +1,894 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ASN_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Sys_Empresas">
+          <Key>
+            <PropertyRef Name="ID_empresa" />
+          </Key>
+          <Property Name="ID_empresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Logo" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_Notificaciones">
+          <Key>
+            <PropertyRef Name="ID_notificacion" />
+          </Key>
+          <Property Name="ID_notificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="ID_usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_Usuarios">
+          <Key>
+            <PropertyRef Name="ID_usuario" />
+          </Key>
+          <Property Name="ID_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Posicion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Departamentos" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Roles" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Fecha_registro" Type="date" Nullable="false" />
+          <Property Name="Url_image" Type="varchar(max)" Nullable="false" />
+          <Property Name="ID_empresa" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="ID_cliente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Clientes">
+          <Key>
+            <PropertyRef Name="ID_cliente" />
+          </Key>
+          <Property Name="ID_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="DUI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Direccion" Type="varchar(max)" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Empresa" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Lead" Type="bit" Nullable="false" />
+          <Property Name="ID_empresa" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Cotizacion_detalle">
+          <Key>
+            <PropertyRef Name="ID_detalle" />
+          </Key>
+          <Property Name="ID_detalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+          <Property Name="Horas" Type="int" Nullable="false" />
+          <Property Name="Costo" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ID_servicio" Type="int" Nullable="false" />
+          <Property Name="ID_cotizacion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Cotizaciones">
+          <Key>
+            <PropertyRef Name="ID_cotizacion" />
+          </Key>
+          <Property Name="ID_cotizacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_cliente" Type="int" Nullable="false" />
+          <Property Name="No_Cotizacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Empresa" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Telefono" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ID_empresa" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Proyectos">
+          <Key>
+            <PropertyRef Name="ID_proyecto" />
+          </Key>
+          <Property Name="ID_proyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar(max)" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+          <Property Name="Notas" Type="varchar(max)" Nullable="false" />
+          <Property Name="Fecha_creacion" Type="datetime" Nullable="false" />
+          <Property Name="Fecha_finalizacon" Type="datetime" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Prioridad" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="ID_cliente" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="ID_empresa" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Proyectos_Colaboradores">
+          <Key>
+            <PropertyRef Name="ID_detalle" />
+          </Key>
+          <Property Name="ID_detalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_usuario" Type="int" Nullable="false" />
+          <Property Name="ID_proyecto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Proyectos_Documentos">
+          <Key>
+            <PropertyRef Name="ID_documento" />
+          </Key>
+          <Property Name="ID_documento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Descripcion" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Extension" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Tamano" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Path" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Fecha_creacion" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ID_proyecto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Proyectos_Gastos">
+          <Key>
+            <PropertyRef Name="ID_gasto" />
+          </Key>
+          <Property Name="ID_gasto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Concepto" Type="varchar(max)" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Url_image" Type="varchar(max)" Nullable="false" />
+          <Property Name="ID_proyecto" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Sys_Notificaciones_Sys_Usuarios">
+          <End Role="Sys_Usuarios" Type="Self.Sys_Usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sys_Notificaciones" Type="Self.Sys_Notificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sys_Usuarios">
+              <PropertyRef Name="ID_usuario" />
+            </Principal>
+            <Dependent Role="Sys_Notificaciones">
+              <PropertyRef Name="ID_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sys_Usuarios_Sys_Empresas">
+          <End Role="Sys_Empresas" Type="Self.Sys_Empresas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sys_Usuarios" Type="Self.Sys_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sys_Empresas">
+              <PropertyRef Name="ID_empresa" />
+            </Principal>
+            <Dependent Role="Sys_Usuarios">
+              <PropertyRef Name="ID_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Clientes_Sys_Empresas">
+          <End Role="Sys_Empresas" Type="Self.Sys_Empresas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tb_Clientes" Type="Self.Tb_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sys_Empresas">
+              <PropertyRef Name="ID_empresa" />
+            </Principal>
+            <Dependent Role="Tb_Clientes">
+              <PropertyRef Name="ID_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Cotizacion_detalle_Tb_Cotizaciones">
+          <End Role="Tb_Cotizaciones" Type="Self.Tb_Cotizaciones" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tb_Cotizacion_detalle" Type="Self.Tb_Cotizacion_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cotizaciones">
+              <PropertyRef Name="ID_cotizacion" />
+            </Principal>
+            <Dependent Role="Tb_Cotizacion_detalle">
+              <PropertyRef Name="ID_cotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Cotizaciones_Sys_Empresas">
+          <End Role="Sys_Empresas" Type="Self.Sys_Empresas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tb_Cotizaciones" Type="Self.Tb_Cotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sys_Empresas">
+              <PropertyRef Name="ID_empresa" />
+            </Principal>
+            <Dependent Role="Tb_Cotizaciones">
+              <PropertyRef Name="ID_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Cotizaciones_Tb_Clientes">
+          <End Role="Tb_Clientes" Type="Self.Tb_Clientes" Multiplicity="1" />
+          <End Role="Tb_Cotizaciones" Type="Self.Tb_Cotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Clientes">
+              <PropertyRef Name="ID_cliente" />
+            </Principal>
+            <Dependent Role="Tb_Cotizaciones">
+              <PropertyRef Name="ID_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Proyectos_Colaboradores_Sys_Usuarios">
+          <End Role="Sys_Usuarios" Type="Self.Sys_Usuarios" Multiplicity="1" />
+          <End Role="Tb_Proyectos_Colaboradores" Type="Self.Tb_Proyectos_Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sys_Usuarios">
+              <PropertyRef Name="ID_usuario" />
+            </Principal>
+            <Dependent Role="Tb_Proyectos_Colaboradores">
+              <PropertyRef Name="ID_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Proyectos_Colaboradores_Tb_Proyectos">
+          <End Role="Tb_Proyectos" Type="Self.Tb_Proyectos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tb_Proyectos_Colaboradores" Type="Self.Tb_Proyectos_Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Proyectos">
+              <PropertyRef Name="ID_proyecto" />
+            </Principal>
+            <Dependent Role="Tb_Proyectos_Colaboradores">
+              <PropertyRef Name="ID_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Proyectos_Documentos_Tb_Proyectos">
+          <End Role="Tb_Proyectos" Type="Self.Tb_Proyectos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tb_Proyectos_Documentos" Type="Self.Tb_Proyectos_Documentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Proyectos">
+              <PropertyRef Name="ID_proyecto" />
+            </Principal>
+            <Dependent Role="Tb_Proyectos_Documentos">
+              <PropertyRef Name="ID_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Proyectos_Gastos_Tb_Proyectos">
+          <End Role="Tb_Proyectos" Type="Self.Tb_Proyectos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tb_Proyectos_Gastos" Type="Self.Tb_Proyectos_Gastos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Proyectos">
+              <PropertyRef Name="ID_proyecto" />
+            </Principal>
+            <Dependent Role="Tb_Proyectos_Gastos">
+              <PropertyRef Name="ID_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Proyectos_Sys_Empresas">
+          <End Role="Sys_Empresas" Type="Self.Sys_Empresas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tb_Proyectos" Type="Self.Tb_Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sys_Empresas">
+              <PropertyRef Name="ID_empresa" />
+            </Principal>
+            <Dependent Role="Tb_Proyectos">
+              <PropertyRef Name="ID_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Proyectos_Tb_Clientes">
+          <End Role="Tb_Clientes" Type="Self.Tb_Clientes" Multiplicity="1" />
+          <End Role="Tb_Proyectos" Type="Self.Tb_Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Clientes">
+              <PropertyRef Name="ID_cliente" />
+            </Principal>
+            <Dependent Role="Tb_Proyectos">
+              <PropertyRef Name="ID_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ASN_DBModelStoreContainer">
+          <EntitySet Name="Sys_Empresas" EntityType="Self.Sys_Empresas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Notificaciones" EntityType="Self.Sys_Notificaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Usuarios" EntityType="Self.Sys_Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Clientes" EntityType="Self.Tb_Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Cotizacion_detalle" EntityType="Self.Tb_Cotizacion_detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Cotizaciones" EntityType="Self.Tb_Cotizaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Proyectos" EntityType="Self.Tb_Proyectos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Proyectos_Colaboradores" EntityType="Self.Tb_Proyectos_Colaboradores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Proyectos_Documentos" EntityType="Self.Tb_Proyectos_Documentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Proyectos_Gastos" EntityType="Self.Tb_Proyectos_Gastos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Sys_Notificaciones_Sys_Usuarios" Association="Self.FK_Sys_Notificaciones_Sys_Usuarios">
+            <End Role="Sys_Usuarios" EntitySet="Sys_Usuarios" />
+            <End Role="Sys_Notificaciones" EntitySet="Sys_Notificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sys_Usuarios_Sys_Empresas" Association="Self.FK_Sys_Usuarios_Sys_Empresas">
+            <End Role="Sys_Empresas" EntitySet="Sys_Empresas" />
+            <End Role="Sys_Usuarios" EntitySet="Sys_Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Clientes_Sys_Empresas" Association="Self.FK_Tb_Clientes_Sys_Empresas">
+            <End Role="Sys_Empresas" EntitySet="Sys_Empresas" />
+            <End Role="Tb_Clientes" EntitySet="Tb_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Cotizacion_detalle_Tb_Cotizaciones" Association="Self.FK_Tb_Cotizacion_detalle_Tb_Cotizaciones">
+            <End Role="Tb_Cotizaciones" EntitySet="Tb_Cotizaciones" />
+            <End Role="Tb_Cotizacion_detalle" EntitySet="Tb_Cotizacion_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Cotizaciones_Sys_Empresas" Association="Self.FK_Tb_Cotizaciones_Sys_Empresas">
+            <End Role="Sys_Empresas" EntitySet="Sys_Empresas" />
+            <End Role="Tb_Cotizaciones" EntitySet="Tb_Cotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Cotizaciones_Tb_Clientes" Association="Self.FK_Tb_Cotizaciones_Tb_Clientes">
+            <End Role="Tb_Clientes" EntitySet="Tb_Clientes" />
+            <End Role="Tb_Cotizaciones" EntitySet="Tb_Cotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Proyectos_Colaboradores_Sys_Usuarios" Association="Self.FK_Tb_Proyectos_Colaboradores_Sys_Usuarios">
+            <End Role="Sys_Usuarios" EntitySet="Sys_Usuarios" />
+            <End Role="Tb_Proyectos_Colaboradores" EntitySet="Tb_Proyectos_Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Proyectos_Colaboradores_Tb_Proyectos" Association="Self.FK_Tb_Proyectos_Colaboradores_Tb_Proyectos">
+            <End Role="Tb_Proyectos" EntitySet="Tb_Proyectos" />
+            <End Role="Tb_Proyectos_Colaboradores" EntitySet="Tb_Proyectos_Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Proyectos_Documentos_Tb_Proyectos" Association="Self.FK_Tb_Proyectos_Documentos_Tb_Proyectos">
+            <End Role="Tb_Proyectos" EntitySet="Tb_Proyectos" />
+            <End Role="Tb_Proyectos_Documentos" EntitySet="Tb_Proyectos_Documentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Proyectos_Gastos_Tb_Proyectos" Association="Self.FK_Tb_Proyectos_Gastos_Tb_Proyectos">
+            <End Role="Tb_Proyectos" EntitySet="Tb_Proyectos" />
+            <End Role="Tb_Proyectos_Gastos" EntitySet="Tb_Proyectos_Gastos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Proyectos_Sys_Empresas" Association="Self.FK_Tb_Proyectos_Sys_Empresas">
+            <End Role="Sys_Empresas" EntitySet="Sys_Empresas" />
+            <End Role="Tb_Proyectos" EntitySet="Tb_Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Proyectos_Tb_Clientes" Association="Self.FK_Tb_Proyectos_Tb_Clientes">
+            <End Role="Tb_Clientes" EntitySet="Tb_Clientes" />
+            <End Role="Tb_Proyectos" EntitySet="Tb_Proyectos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ASN_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Sys_Empresas">
+          <Key>
+            <PropertyRef Name="ID_empresa" />
+          </Key>
+          <Property Name="ID_empresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Sys_Usuarios" Relationship="Self.FK_Sys_Usuarios_Sys_Empresas" FromRole="Sys_Empresas" ToRole="Sys_Usuarios" />
+          <NavigationProperty Name="Tb_Clientes" Relationship="Self.FK_Tb_Clientes_Sys_Empresas" FromRole="Sys_Empresas" ToRole="Tb_Clientes" />
+          <NavigationProperty Name="Tb_Cotizaciones" Relationship="Self.FK_Tb_Cotizaciones_Sys_Empresas" FromRole="Sys_Empresas" ToRole="Tb_Cotizaciones" />
+          <NavigationProperty Name="Tb_Proyectos" Relationship="ASN_DBModel.FK_Tb_Proyectos_Sys_Empresas" FromRole="Sys_Empresas" ToRole="Tb_Proyectos" />
+        </EntityType>
+        <EntityType Name="Sys_Notificaciones">
+          <Key>
+            <PropertyRef Name="ID_notificacion" />
+          </Key>
+          <Property Name="ID_notificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="ID_usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sys_Usuarios" Relationship="Self.FK_Sys_Notificaciones_Sys_Usuarios" FromRole="Sys_Notificaciones" ToRole="Sys_Usuarios" />
+        </EntityType>
+        <EntityType Name="Sys_Usuarios">
+          <Key>
+            <PropertyRef Name="ID_usuario" />
+          </Key>
+          <Property Name="ID_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Posicion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Departamentos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Roles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_registro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Url_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_empresa" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Sys_Empresas" Relationship="Self.FK_Sys_Usuarios_Sys_Empresas" FromRole="Sys_Usuarios" ToRole="Sys_Empresas" />
+          <NavigationProperty Name="Sys_Notificaciones" Relationship="Self.FK_Sys_Notificaciones_Sys_Usuarios" FromRole="Sys_Usuarios" ToRole="Sys_Notificaciones" />
+          <Property Name="ID_cliente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tb_Proyectos_Colaboradores" Relationship="ASN_DBModel.FK_Tb_Proyectos_Colaboradores_Sys_Usuarios" FromRole="Sys_Usuarios" ToRole="Tb_Proyectos_Colaboradores" />
+        </EntityType>
+        <EntityType Name="Tb_Clientes">
+          <Key>
+            <PropertyRef Name="ID_cliente" />
+          </Key>
+          <Property Name="ID_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DUI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Empresa" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lead" Type="Boolean" Nullable="false" />
+          <Property Name="ID_empresa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sys_Empresas" Relationship="Self.FK_Tb_Clientes_Sys_Empresas" FromRole="Tb_Clientes" ToRole="Sys_Empresas" />
+          <NavigationProperty Name="Tb_Cotizaciones" Relationship="Self.FK_Tb_Cotizaciones_Tb_Clientes" FromRole="Tb_Clientes" ToRole="Tb_Cotizaciones" />
+          <NavigationProperty Name="Tb_Proyectos" Relationship="ASN_DBModel.FK_Tb_Proyectos_Tb_Clientes" FromRole="Tb_Clientes" ToRole="Tb_Proyectos" />
+        </EntityType>
+        <EntityType Name="Tb_Cotizacion_detalle">
+          <Key>
+            <PropertyRef Name="ID_detalle" />
+          </Key>
+          <Property Name="ID_detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Horas" Type="Int32" Nullable="false" />
+          <Property Name="Costo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ID_servicio" Type="Int32" Nullable="false" />
+          <Property Name="ID_cotizacion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tb_Cotizaciones" Relationship="Self.FK_Tb_Cotizacion_detalle_Tb_Cotizaciones" FromRole="Tb_Cotizacion_detalle" ToRole="Tb_Cotizaciones" />
+        </EntityType>
+        <EntityType Name="Tb_Cotizaciones">
+          <Key>
+            <PropertyRef Name="ID_cotizacion" />
+          </Key>
+          <Property Name="ID_cotizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_cliente" Type="Int32" Nullable="false" />
+          <Property Name="No_Cotizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Empresa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ID_empresa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sys_Empresas" Relationship="Self.FK_Tb_Cotizaciones_Sys_Empresas" FromRole="Tb_Cotizaciones" ToRole="Sys_Empresas" />
+          <NavigationProperty Name="Tb_Clientes" Relationship="Self.FK_Tb_Cotizaciones_Tb_Clientes" FromRole="Tb_Cotizaciones" ToRole="Tb_Clientes" />
+          <NavigationProperty Name="Tb_Cotizacion_detalle" Relationship="Self.FK_Tb_Cotizacion_detalle_Tb_Cotizaciones" FromRole="Tb_Cotizaciones" ToRole="Tb_Cotizacion_detalle" />
+        </EntityType>
+        <Association Name="FK_Sys_Usuarios_Sys_Empresas">
+          <End Role="Sys_Empresas" Type="Self.Sys_Empresas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sys_Usuarios" Type="Self.Sys_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sys_Empresas">
+              <PropertyRef Name="ID_empresa" />
+            </Principal>
+            <Dependent Role="Sys_Usuarios">
+              <PropertyRef Name="ID_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Clientes_Sys_Empresas">
+          <End Role="Sys_Empresas" Type="Self.Sys_Empresas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tb_Clientes" Type="Self.Tb_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sys_Empresas">
+              <PropertyRef Name="ID_empresa" />
+            </Principal>
+            <Dependent Role="Tb_Clientes">
+              <PropertyRef Name="ID_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Cotizaciones_Sys_Empresas">
+          <End Role="Sys_Empresas" Type="Self.Sys_Empresas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tb_Cotizaciones" Type="Self.Tb_Cotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sys_Empresas">
+              <PropertyRef Name="ID_empresa" />
+            </Principal>
+            <Dependent Role="Tb_Cotizaciones">
+              <PropertyRef Name="ID_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sys_Notificaciones_Sys_Usuarios">
+          <End Role="Sys_Usuarios" Type="Self.Sys_Usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sys_Notificaciones" Type="Self.Sys_Notificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sys_Usuarios">
+              <PropertyRef Name="ID_usuario" />
+            </Principal>
+            <Dependent Role="Sys_Notificaciones">
+              <PropertyRef Name="ID_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Cotizaciones_Tb_Clientes">
+          <End Role="Tb_Clientes" Type="Self.Tb_Clientes" Multiplicity="1" />
+          <End Role="Tb_Cotizaciones" Type="Self.Tb_Cotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Clientes">
+              <PropertyRef Name="ID_cliente" />
+            </Principal>
+            <Dependent Role="Tb_Cotizaciones">
+              <PropertyRef Name="ID_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Cotizacion_detalle_Tb_Cotizaciones">
+          <End Role="Tb_Cotizaciones" Type="Self.Tb_Cotizaciones" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tb_Cotizacion_detalle" Type="Self.Tb_Cotizacion_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cotizaciones">
+              <PropertyRef Name="ID_cotizacion" />
+            </Principal>
+            <Dependent Role="Tb_Cotizacion_detalle">
+              <PropertyRef Name="ID_cotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ASN_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Sys_Empresas" EntityType="Self.Sys_Empresas" />
+          <EntitySet Name="Sys_Notificaciones" EntityType="Self.Sys_Notificaciones" />
+          <EntitySet Name="Sys_Usuarios" EntityType="Self.Sys_Usuarios" />
+          <EntitySet Name="Tb_Clientes" EntityType="Self.Tb_Clientes" />
+          <EntitySet Name="Tb_Cotizacion_detalle" EntityType="Self.Tb_Cotizacion_detalle" />
+          <EntitySet Name="Tb_Cotizaciones" EntityType="Self.Tb_Cotizaciones" />
+          <AssociationSet Name="FK_Sys_Usuarios_Sys_Empresas" Association="Self.FK_Sys_Usuarios_Sys_Empresas">
+            <End Role="Sys_Empresas" EntitySet="Sys_Empresas" />
+            <End Role="Sys_Usuarios" EntitySet="Sys_Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Clientes_Sys_Empresas" Association="Self.FK_Tb_Clientes_Sys_Empresas">
+            <End Role="Sys_Empresas" EntitySet="Sys_Empresas" />
+            <End Role="Tb_Clientes" EntitySet="Tb_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Cotizaciones_Sys_Empresas" Association="Self.FK_Tb_Cotizaciones_Sys_Empresas">
+            <End Role="Sys_Empresas" EntitySet="Sys_Empresas" />
+            <End Role="Tb_Cotizaciones" EntitySet="Tb_Cotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sys_Notificaciones_Sys_Usuarios" Association="Self.FK_Sys_Notificaciones_Sys_Usuarios">
+            <End Role="Sys_Usuarios" EntitySet="Sys_Usuarios" />
+            <End Role="Sys_Notificaciones" EntitySet="Sys_Notificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Cotizaciones_Tb_Clientes" Association="Self.FK_Tb_Cotizaciones_Tb_Clientes">
+            <End Role="Tb_Clientes" EntitySet="Tb_Clientes" />
+            <End Role="Tb_Cotizaciones" EntitySet="Tb_Cotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Cotizacion_detalle_Tb_Cotizaciones" Association="Self.FK_Tb_Cotizacion_detalle_Tb_Cotizaciones">
+            <End Role="Tb_Cotizaciones" EntitySet="Tb_Cotizaciones" />
+            <End Role="Tb_Cotizacion_detalle" EntitySet="Tb_Cotizacion_detalle" />
+          </AssociationSet>
+          <EntitySet Name="Tb_Proyectos" EntityType="ASN_DBModel.Tb_Proyectos" />
+          <EntitySet Name="Tb_Proyectos_Colaboradores" EntityType="ASN_DBModel.Tb_Proyectos_Colaboradores" />
+          <EntitySet Name="Tb_Proyectos_Documentos" EntityType="ASN_DBModel.Tb_Proyectos_Documentos" />
+          <EntitySet Name="Tb_Proyectos_Gastos" EntityType="ASN_DBModel.Tb_Proyectos_Gastos" />
+          <AssociationSet Name="FK_Tb_Proyectos_Sys_Empresas" Association="ASN_DBModel.FK_Tb_Proyectos_Sys_Empresas">
+            <End Role="Sys_Empresas" EntitySet="Sys_Empresas" />
+            <End Role="Tb_Proyectos" EntitySet="Tb_Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Proyectos_Colaboradores_Sys_Usuarios" Association="ASN_DBModel.FK_Tb_Proyectos_Colaboradores_Sys_Usuarios">
+            <End Role="Sys_Usuarios" EntitySet="Sys_Usuarios" />
+            <End Role="Tb_Proyectos_Colaboradores" EntitySet="Tb_Proyectos_Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Proyectos_Colaboradores_Tb_Proyectos" Association="ASN_DBModel.FK_Tb_Proyectos_Colaboradores_Tb_Proyectos">
+            <End Role="Tb_Proyectos" EntitySet="Tb_Proyectos" />
+            <End Role="Tb_Proyectos_Colaboradores" EntitySet="Tb_Proyectos_Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Proyectos_Documentos_Tb_Proyectos" Association="ASN_DBModel.FK_Tb_Proyectos_Documentos_Tb_Proyectos">
+            <End Role="Tb_Proyectos" EntitySet="Tb_Proyectos" />
+            <End Role="Tb_Proyectos_Documentos" EntitySet="Tb_Proyectos_Documentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Proyectos_Gastos_Tb_Proyectos" Association="ASN_DBModel.FK_Tb_Proyectos_Gastos_Tb_Proyectos">
+            <End Role="Tb_Proyectos" EntitySet="Tb_Proyectos" />
+            <End Role="Tb_Proyectos_Gastos" EntitySet="Tb_Proyectos_Gastos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Proyectos_Tb_Clientes" Association="ASN_DBModel.FK_Tb_Proyectos_Tb_Clientes">
+            <End Role="Tb_Clientes" EntitySet="Tb_Clientes" />
+            <End Role="Tb_Proyectos" EntitySet="Tb_Proyectos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Tb_Proyectos">
+          <Key>
+            <PropertyRef Name="ID_proyecto" />
+          </Key>
+          <Property Name="ID_proyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Notas" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_creacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fecha_finalizacon" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Prioridad" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ID_cliente" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="ID_empresa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sys_Empresas" Relationship="ASN_DBModel.FK_Tb_Proyectos_Sys_Empresas" FromRole="Tb_Proyectos" ToRole="Sys_Empresas" />
+          <NavigationProperty Name="Tb_Proyectos_Colaboradores" Relationship="ASN_DBModel.FK_Tb_Proyectos_Colaboradores_Tb_Proyectos" FromRole="Tb_Proyectos" ToRole="Tb_Proyectos_Colaboradores" />
+          <NavigationProperty Name="Tb_Proyectos_Documentos" Relationship="ASN_DBModel.FK_Tb_Proyectos_Documentos_Tb_Proyectos" FromRole="Tb_Proyectos" ToRole="Tb_Proyectos_Documentos" />
+          <NavigationProperty Name="Tb_Proyectos_Gastos" Relationship="ASN_DBModel.FK_Tb_Proyectos_Gastos_Tb_Proyectos" FromRole="Tb_Proyectos" ToRole="Tb_Proyectos_Gastos" />
+          <NavigationProperty Name="Tb_Clientes" Relationship="ASN_DBModel.FK_Tb_Proyectos_Tb_Clientes" FromRole="Tb_Proyectos" ToRole="Tb_Clientes" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tb_Proyectos_Colaboradores">
+          <Key>
+            <PropertyRef Name="ID_detalle" />
+          </Key>
+          <Property Name="ID_detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_usuario" Type="Int32" Nullable="false" />
+          <Property Name="ID_proyecto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sys_Usuarios" Relationship="ASN_DBModel.FK_Tb_Proyectos_Colaboradores_Sys_Usuarios" FromRole="Tb_Proyectos_Colaboradores" ToRole="Sys_Usuarios" />
+          <NavigationProperty Name="Tb_Proyectos" Relationship="ASN_DBModel.FK_Tb_Proyectos_Colaboradores_Tb_Proyectos" FromRole="Tb_Proyectos_Colaboradores" ToRole="Tb_Proyectos" />
+        </EntityType>
+        <EntityType Name="Tb_Proyectos_Documentos">
+          <Key>
+            <PropertyRef Name="ID_documento" />
+          </Key>
+          <Property Name="ID_documento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Extension" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Tamano" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Path" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Fecha_creacion" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ID_proyecto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tb_Proyectos" Relationship="ASN_DBModel.FK_Tb_Proyectos_Documentos_Tb_Proyectos" FromRole="Tb_Proyectos_Documentos" ToRole="Tb_Proyectos" />
+        </EntityType>
+        <EntityType Name="Tb_Proyectos_Gastos">
+          <Key>
+            <PropertyRef Name="ID_gasto" />
+          </Key>
+          <Property Name="ID_gasto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Url_image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ID_proyecto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tb_Proyectos" Relationship="ASN_DBModel.FK_Tb_Proyectos_Gastos_Tb_Proyectos" FromRole="Tb_Proyectos_Gastos" ToRole="Tb_Proyectos" />
+        </EntityType>
+        <Association Name="FK_Tb_Proyectos_Sys_Empresas">
+          <End Type="ASN_DBModel.Sys_Empresas" Role="Sys_Empresas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ASN_DBModel.Tb_Proyectos" Role="Tb_Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sys_Empresas">
+              <PropertyRef Name="ID_empresa" />
+            </Principal>
+            <Dependent Role="Tb_Proyectos">
+              <PropertyRef Name="ID_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Proyectos_Colaboradores_Sys_Usuarios">
+          <End Type="ASN_DBModel.Sys_Usuarios" Role="Sys_Usuarios" Multiplicity="1" />
+          <End Type="ASN_DBModel.Tb_Proyectos_Colaboradores" Role="Tb_Proyectos_Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sys_Usuarios">
+              <PropertyRef Name="ID_usuario" />
+            </Principal>
+            <Dependent Role="Tb_Proyectos_Colaboradores">
+              <PropertyRef Name="ID_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Proyectos_Colaboradores_Tb_Proyectos">
+          <End Type="ASN_DBModel.Tb_Proyectos" Role="Tb_Proyectos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ASN_DBModel.Tb_Proyectos_Colaboradores" Role="Tb_Proyectos_Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Proyectos">
+              <PropertyRef Name="ID_proyecto" />
+            </Principal>
+            <Dependent Role="Tb_Proyectos_Colaboradores">
+              <PropertyRef Name="ID_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Proyectos_Documentos_Tb_Proyectos">
+          <End Type="ASN_DBModel.Tb_Proyectos" Role="Tb_Proyectos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ASN_DBModel.Tb_Proyectos_Documentos" Role="Tb_Proyectos_Documentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Proyectos">
+              <PropertyRef Name="ID_proyecto" />
+            </Principal>
+            <Dependent Role="Tb_Proyectos_Documentos">
+              <PropertyRef Name="ID_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Proyectos_Gastos_Tb_Proyectos">
+          <End Type="ASN_DBModel.Tb_Proyectos" Role="Tb_Proyectos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ASN_DBModel.Tb_Proyectos_Gastos" Role="Tb_Proyectos_Gastos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Proyectos">
+              <PropertyRef Name="ID_proyecto" />
+            </Principal>
+            <Dependent Role="Tb_Proyectos_Gastos">
+              <PropertyRef Name="ID_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Proyectos_Tb_Clientes">
+          <End Type="ASN_DBModel.Tb_Clientes" Role="Tb_Clientes" Multiplicity="1" />
+          <End Type="ASN_DBModel.Tb_Proyectos" Role="Tb_Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Clientes">
+              <PropertyRef Name="ID_cliente" />
+            </Principal>
+            <Dependent Role="Tb_Proyectos">
+              <PropertyRef Name="ID_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ASN_DBModelStoreContainer" CdmEntityContainer="ASN_DBEntities">
+          <EntitySetMapping Name="Sys_Empresas">
+            <EntityTypeMapping TypeName="ASN_DBModel.Sys_Empresas">
+              <MappingFragment StoreEntitySet="Sys_Empresas">
+                <ScalarProperty Name="ID_empresa" ColumnName="ID_empresa" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_Notificaciones">
+            <EntityTypeMapping TypeName="ASN_DBModel.Sys_Notificaciones">
+              <MappingFragment StoreEntitySet="Sys_Notificaciones">
+                <ScalarProperty Name="ID_notificacion" ColumnName="ID_notificacion" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="ID_usuario" ColumnName="ID_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_Usuarios">
+            <EntityTypeMapping TypeName="ASN_DBModel.Sys_Usuarios">
+              <MappingFragment StoreEntitySet="Sys_Usuarios">
+                <ScalarProperty Name="ID_cliente" ColumnName="ID_cliente" />
+                <ScalarProperty Name="ID_usuario" ColumnName="ID_usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Posicion" ColumnName="Posicion" />
+                <ScalarProperty Name="Departamentos" ColumnName="Departamentos" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="Fecha_registro" ColumnName="Fecha_registro" />
+                <ScalarProperty Name="Url_image" ColumnName="Url_image" />
+                <ScalarProperty Name="ID_empresa" ColumnName="ID_empresa" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Clientes">
+            <EntityTypeMapping TypeName="ASN_DBModel.Tb_Clientes">
+              <MappingFragment StoreEntitySet="Tb_Clientes">
+                <ScalarProperty Name="ID_cliente" ColumnName="ID_cliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="DUI" ColumnName="DUI" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Lead" ColumnName="Lead" />
+                <ScalarProperty Name="ID_empresa" ColumnName="ID_empresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Cotizacion_detalle">
+            <EntityTypeMapping TypeName="ASN_DBModel.Tb_Cotizacion_detalle">
+              <MappingFragment StoreEntitySet="Tb_Cotizacion_detalle">
+                <ScalarProperty Name="ID_detalle" ColumnName="ID_detalle" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Horas" ColumnName="Horas" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="ID_servicio" ColumnName="ID_servicio" />
+                <ScalarProperty Name="ID_cotizacion" ColumnName="ID_cotizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Cotizaciones">
+            <EntityTypeMapping TypeName="ASN_DBModel.Tb_Cotizaciones">
+              <MappingFragment StoreEntitySet="Tb_Cotizaciones">
+                <ScalarProperty Name="ID_cotizacion" ColumnName="ID_cotizacion" />
+                <ScalarProperty Name="ID_cliente" ColumnName="ID_cliente" />
+                <ScalarProperty Name="No_Cotizacion" ColumnName="No_Cotizacion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="ID_empresa" ColumnName="ID_empresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Proyectos">
+            <EntityTypeMapping TypeName="ASN_DBModel.Tb_Proyectos">
+              <MappingFragment StoreEntitySet="Tb_Proyectos">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="ID_empresa" ColumnName="ID_empresa" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="ID_cliente" ColumnName="ID_cliente" />
+                <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Fecha_finalizacon" ColumnName="Fecha_finalizacon" />
+                <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+                <ScalarProperty Name="Notas" ColumnName="Notas" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID_proyecto" ColumnName="ID_proyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Proyectos_Colaboradores">
+            <EntityTypeMapping TypeName="ASN_DBModel.Tb_Proyectos_Colaboradores">
+              <MappingFragment StoreEntitySet="Tb_Proyectos_Colaboradores">
+                <ScalarProperty Name="ID_proyecto" ColumnName="ID_proyecto" />
+                <ScalarProperty Name="ID_usuario" ColumnName="ID_usuario" />
+                <ScalarProperty Name="ID_detalle" ColumnName="ID_detalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Proyectos_Documentos">
+            <EntityTypeMapping TypeName="ASN_DBModel.Tb_Proyectos_Documentos">
+              <MappingFragment StoreEntitySet="Tb_Proyectos_Documentos">
+                <ScalarProperty Name="ID_proyecto" ColumnName="ID_proyecto" />
+                <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Tamano" ColumnName="Tamano" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID_documento" ColumnName="ID_documento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Proyectos_Gastos">
+            <EntityTypeMapping TypeName="ASN_DBModel.Tb_Proyectos_Gastos">
+              <MappingFragment StoreEntitySet="Tb_Proyectos_Gastos">
+                <ScalarProperty Name="ID_proyecto" ColumnName="ID_proyecto" />
+                <ScalarProperty Name="Url_image" ColumnName="Url_image" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="ID_gasto" ColumnName="ID_gasto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
