@@ -141,6 +141,7 @@ namespace asnlegalapp.Controllers.CRM
             tb_Clientes.ID_empresa = 1;
             tb_Clientes.Contrasena = "";
             tb_Clientes.Lead = false;
+            if (tb_Clientes.Direccion == null) { tb_Clientes.Direccion = ""; }
             if (tb_Clientes.Empresa == null) { tb_Clientes.Empresa = ""; }
             if (ModelState.IsValid)
             {
